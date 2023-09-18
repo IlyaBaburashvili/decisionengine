@@ -54,7 +54,7 @@ from decisionengine.framework.util.redis_stats import redis_stats
 DEFAULT_WEBSERVER_PORT = 8000
 
 # DecisionEngine metrics
-STATUS_HISTOGRAM = Histogram("de_client_status_duration_seconds", "Time to run de-client --status")
+STATUS_HISTOGRAM = Histogram("de_client_status_duration_seconds", "Time to run de-client --status", buckets=(0.01, 0.015, 0.02, 0.025, 0.03, 0.035, 0.04, 0.045, 0.05, 0.075, 0.1, 0.15, 0.2))
 PRINT_PRODUCT_HISTOGRAM = Histogram("de_client_print_product_duration_seconds", "Time to run de-client --print-product")
 START_CHANNEL_HISTOGRAM = Histogram(
     "de_client_start_channel_duration_seconds", "Time to run de-client --start-channel", ["channel_name"]
@@ -63,14 +63,14 @@ RM_CHANNEL_HISTOGRAM = Histogram(
     "de_client_rm_channel_duration_seconds", "Time to run de-client --stop-channel", ["channel_name"]
 )
 QUERY_TOOL_HISTOGRAM = Histogram("de_client_query_duration_seconds", "Time to run de-client --query", ["product"])
-METRICS_HISTOGRAM = Histogram("de_client_metrics_duration_seconds", "Time to run de-client --status")
-PING_HISTOGRAM = Histogram("de_client_ping_duration_seconds", "Time to run de-client --ping")
+METRICS_HISTOGRAM = Histogram("de_client_metrics_duration_seconds", "Time to run de-client --metrics", buckets=(0.01, 0.015, 0.02, 0.025, 0.03, 0.035, 0.04, 0.045, 0.05, 0.075, 0.1, 0.15, 0.2, 0.25, 0.3))
+PING_HISTOGRAM = Histogram("de_client_ping_duration_seconds", "Time to run de-client --ping", buckets=(0.005, 0.0075, 0.01, 0.015, 0.02, 0.025, 0.03, 0.035, 0.04, 0.045, 0.05))
 BLOCK_WHILE_HISTOGRAM = Histogram("de_client_block_while_duration_seconds", "Time to run de-client --block-while", ["state"])
-SHOW_CONFIG_HISTOGRAM = Histogram("de_client_show_config_duration_seconds", "Time to run de-client --show-config")
-SHOW_DE_CONFIG_HISTOGRAM = Histogram("de_client_show_de_config_duration_seconds", "Time to run de-client --show-de-config")
-PRINT_PRODUCTS_HISTOGRAM = Histogram("de_client_print_products_duration_seconds", "Time to run de-client --print-products")
-QUEUE_STATUS_HISTOGRAM = Histogram("de_client_queue_status_duration_seconds", "Time to run de-client --queue-status")
-PRODUCT_DEPENDENCIES_HISTOGRAM = Histogram("de_client_product_dependencies_duration_seconds", "Time to run de-client --product-dependencies")
+SHOW_CONFIG_HISTOGRAM = Histogram("de_client_show_config_duration_seconds", "Time to run de-client --show-config", buckets=(0.005, 0.0075, 0.01, 0.015, 0.02, 0.025, 0.03, 0.035, 0.04, 0.045, 0.05, 0.075, 0.1))
+SHOW_DE_CONFIG_HISTOGRAM = Histogram("de_client_show_de_config_duration_seconds", "Time to run de-client --show-de-config", buckets=(0.005, 0.0075, 0.01, 0.015, 0.02, 0.025, 0.03, 0.035, 0.04, 0.045, 0.05, 0.075, 0.1))
+PRINT_PRODUCTS_HISTOGRAM = Histogram("de_client_print_products_duration_seconds", "Time to run de-client --print-products", buckets=(5, 7.5, 10, 12.5, 15, 17.5, 20, 22.5, 25, 27.5, 30, 35, 40, 50, 60))
+QUEUE_STATUS_HISTOGRAM = Histogram("de_client_queue_status_duration_seconds", "Time to run de-client --queue-status", buckets=(0.005, 0.0075, 0.01, 0.015, 0.02, 0.025, 0.03, 0.035, 0.04, 0.045, 0.05, 0.075, 0.1))
+PRODUCT_DEPENDENCIES_HISTOGRAM = Histogram("de_client_product_dependencies_duration_seconds", "Time to run de-client --product-dependencies", buckets=(0.005, 0.0075, 0.01, 0.015, 0.02, 0.025, 0.03, 0.035, 0.04, 0.045, 0.05, 0.075, 0.1))
 STOP_HISTOGRAM = Histogram("de_client_stop_duration_seconds", "Time to run de-client --stop")
 CREATE_CHANNEL_HISTOGRAM = Histogram("de_client_create_channel_duration_seconds", "Time to run de-client --create-channel")
 START_CHANNELS_HISTOGRAM = Histogram("de_client_start_channels_duration_seconds", "Time to run de-client --start-channels")
@@ -84,7 +84,7 @@ GET_SOURCE_LOG_LEVEL_HISTOGRAM = Histogram("de_client_get_source_log_level_durat
 SET_SOURCE_LOG_LEVEL_HISTOGRAM = Histogram("de_client_set_source_log_level_duration_seconds", "Time to run de-client --set-source-log-level", ["source_name"])
 REAPER_START_HISTOGRAM = Histogram("de_client_reaper_start_duration_seconds", "Time to run de-client --reaper-start")
 REAPER_STOP_HISTOGRAM = Histogram("de_client_reaper_stop_duration_seconds", "Time to run de-client --reaper-stop")
-REAPER_STATUS_HISTOGRAM = Histogram("de_client_reaper_status_duration_seconds", "Time to run de-client --reaper-status")
+REAPER_STATUS_HISTOGRAM = Histogram("de_client_reaper_status_duration_seconds", "Time to run de-client --reaper-status", buckets=(0.005, 0.0075, 0.01, 0.015, 0.02, 0.025, 0.03, 0.035, 0.04, 0.045, 0.05))
 
 
 WORKERS_COUNT = Gauge("de_workers_total", "Number of workers started by the Decision Engine")
